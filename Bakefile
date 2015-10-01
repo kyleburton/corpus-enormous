@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+bake_require github.com/kyleburton/bake-recipies/emacs/cider.sh
+
+bake_task run_emacs "Run emacs with Kyle's configuration"
+function run_emacs () {
+  emacs -nw -q -l $HOME/.bake/packages/github.com/kyleburton/bake-recipies/files/emacs/.emacs "$@"
+}
+
+bake_task run_dev "Run the project's main (the NREPL server)"
+function run_dev () {
+  lein with-profile +dev run -m corpus-enormous.nrepl
+}
+
+# bake_task gen-rand-email-file "Generate a random list of emails."
+# function gen-rand-email-file () {
+#   lein run  -m data-talk.core generate-email-address-file
+# }
+ 
