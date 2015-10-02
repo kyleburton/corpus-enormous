@@ -33,3 +33,8 @@
   (rand-nth (fnames)))
 
 
+(defn rand-first-last []
+  (str (rand-fname) " " (rand-lname)))
+
+(defn rand-last-first []
+  (str (rand-lname) ", " (rand-fname)))

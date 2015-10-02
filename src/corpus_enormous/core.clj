@@ -1,6 +1,8 @@
-(ns corpus-enormous.core)
+(ns corpus-enormous.core
+  (:require
+   [corpus-enormous.emails   :as emails]
+   [corpus-enormous.names.us :as us-names]
+   [clojure.tools.logging    :as log]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn -main [& args]
+  (log/infof "args=%s" args))

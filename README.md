@@ -2,11 +2,14 @@
 
 A Clojure library for generating sample data sets.
 
-Roadmap:
+Supports:
 
 * US / English Names
 * US Phone Numbers
 * US Addresses
+
+Roadmap:
+
 * Email Addresses based on US / English Names
 
 ## Usage
