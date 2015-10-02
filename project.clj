@@ -10,7 +10,8 @@
                                      [org.clojure/tools.nrepl                "0.2.11"]
                                      ;; NB: cider-nrepl is up to 0.9.1
                                      [cider/cider-nrepl                      "0.7.0"]
-                                     [prismatic/schema                       "1.0.1"]
-                                     [org.clojure/data.csv                   "0.1.3"]
                                     ]}}
-  :dependencies [[org.clojure/clojure "1.7.0"]])
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [prismatic/schema                       "1.0.1"]
+                 [org.clojure/data.csv                   "0.1.3"]
+                 ])

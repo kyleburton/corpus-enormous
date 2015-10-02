@@ -17,3 +17,14 @@ function run_dev () {
 #   lein run  -m data-talk.core generate-email-address-file
 # }
  
+
+bake_task get-tlds
+function get-tlds () {
+  local url="http://www.iana.org/domains/root/db"
+  local htmlfile="resources/corpus-enormous/internet/iana.org-tlds.html"
+  local tldfile="resources/corpus-enormous/internet/tlds.txt"
+  test -f "$htmlfile" || curl "$url" > "$htmlfile"
+  if [ ! -e $tldfile ]; then
+    grep 'domain tld' resources/corpus-enormous/internet/iana.org-tlds.html | cut -d'>' -f3- | cut -f1 -d'<' > $tldfile
+  fi
+}
