@@ -73,7 +73,7 @@ user=> (->> corpus-enormous.people/random-person repeatedly (map clojure.pprint/
  :last-name "DANGELIS",
  :phone "623 941-6299",
  :city "BROWNTOWN",
- :ssn "35-47-7538",
+ :ssn "135-47-7538",
  :state "WI",
  :first-name "CHUN",
  :street2 nil,
