@@ -5,4 +5,4 @@
    [clojure.tools.logging    :as log]))
 
 (defn -main [& args]
-  (log/infof "args=%s" args))
+  (let [cmd (-> args first (or "help"))]))

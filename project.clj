@@ -1,4 +1,4 @@
-(defproject corpus-enormous "0.1.0"
+(defproject corpus-enormous "0.1.1-SNAPSHOT"
   :description "Randomized Data Set Generator"
   :url "https://github.com/kyleburton/corpus-enormous"
   :license {:name "Eclipse Public License"

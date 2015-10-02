@@ -11,8 +11,14 @@ Supports:
 
 Roadmap:
 
+* Commandline interface for generating sample data sets.
+* DSL for generators based on the internal data sets
+* registry for additional data sets
 * Namespace to com.github.kyleburton and release to clojars
 * Java API
+* benchmarking
+* explore turnin templates into code via codegen for better performance
+* allow users to trigger eager vs lazy initialization
 
 ## Usage
 
