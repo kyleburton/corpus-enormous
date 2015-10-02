@@ -1,6 +1,6 @@
-(defproject corpus-enormous "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+(defproject corpus-enormous "0.1.0"
+  :description "Randomized Data Set Generator"
+  :url "https://github.com/kyleburton/corpus-enormous"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :profiles {:dev {:resource-paths ["dev-resources"]
