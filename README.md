@@ -32,7 +32,7 @@ Java HotSpot(TM) 64-Bit Server VM 1.8.0_31-b13
 user=> (require 'corpus-enormous.people)
 nil
 user=> (corpus-enormous.people/random-person)
-{:street1 "742 W. Amodeo Parkway", :email "dnayes5@spamgoes.in", :last-name "NAYES", :city "SUNRAY", :ssn "497-76-900", :state "TX", :first-name "DEON", :street2 nil, :zip "79086", :gender "M"}
+{:street1 "3 South Mogan Avenue", :email "pearl.galicia@sweetxxx.de", :last-name "GALICIA", :phone "(202) 793-2635", :city "DAVY", :ssn "492-95-1989", :state "WV", :first-name "PEARL", :street2 nil, :zip "24828", :gender "F"}
 user=> 
 </pre>
 
