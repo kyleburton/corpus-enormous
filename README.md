@@ -11,6 +11,7 @@ Supports:
 
 Roadmap:
 
+* Namespace to com.github.kyleburton and release to clojars
 * Java API
 
 ## Usage
