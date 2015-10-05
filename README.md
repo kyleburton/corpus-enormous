@@ -7,22 +7,26 @@ Supports:
 * US / English Names
 * US Phone Numbers
 * US Addresses
+ * City, State and Zip5's are real, though Street 1 and Street 2 data is fabricated
 * Email Addresses based on US / English Names
 
 Roadmap:
 
-* Commandline interface for generating sample data sets.
-* DSL for generators based on the internal data sets
-* registry for additional data sets
-* Namespace to com.github.kyleburton and release to clojars
-* Java API
-* benchmarking
-* explore turnin templates into code via codegen for better performance
-* allow users to trigger eager vs lazy initialization
+* Data: obtain a better list of domain names
+* Data: obtain a list of sensible us street names
+* Util: Commandline interface for generating sample data sets.
+* Lib:  DSL for generators based on the internal data sets
+* Lib:  registry for additional data sets
+* Lib:  Namespace to com.github.kyleburton and release to clojars
+* Lib:  Java API
+* Lib:  benchmarking
+* Lib:  explore code-generation for DSL and string templates (performance)
+* Lib:  allow users to trigger eager vs lazy initialization (prime the caches)
+* Gen:  dummy credit card numbers that adhere to the checksum algorithm
 
 ## Usage
 
-<pre>
+```Clojure
 > lein repl
 user=> (require 'corpus-enormous.people)
 nil
@@ -88,7 +92,7 @@ user=> (->> corpus-enormous.people/random-person repeatedly (map clojure.pprint/
  :gender "F"}
 (nil nil nil nil nil)
 user=> 
-</pre>
+```
 
 ## License
 
