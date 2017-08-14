@@ -1,7 +1,9 @@
 (ns corpus-enormous.core-test
   (:require [clojure.test :refer :all]
-            [corpus-enormous.core :refer :all]))
+            [corpus-enormous.phones.us :as phone]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest test-phones
+  (dotimes [ii 100]
+    (is (not (nil? (phone/random-area-code)))))
+  (dotimes [ii 100]
+   (is (not (nil? (phone/random-us-phone-number))))))
