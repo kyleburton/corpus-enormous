@@ -395,6 +395,12 @@
    #(nth % 0)
    (drop 2 us-area-code-detail)))
 
+(defn area-code-detail [ac]
+  (->>
+   us-area-code-detail
+   (filter #(= (nth % 0) ac))
+   first))
+
 (defn random-area-code
   ([]
    (random-area-code rand-nth))
@@ -428,10 +434,45 @@
                                "1 (%s) ###-#### ext##"
                                ])
 
-(defn random-us-phone-number
+(defn call-until [f p]
+  (loop [v (f)]
+    (if (p v)
+      v
+      (recur (f)))))
+
+(defn random-nxx-xxxx-4ext []
+  ;; NB: the efficiency of this is ... not great
+  ;; NB: NPAs and NXXs that start with a zero or one are not valid :/, must be 2-9
+  [(call-until #(rand-int 10) #(> % 1))
+   (rand-int 10)
+   (rand-int 10)
+   
+   (rand-int 10)
+   (rand-int 10)
+   (rand-int 10)
+   (rand-int 10)
+
+   (rand-int 10)
+   (rand-int 10)
+   (rand-int 10)
+   (rand-int 10)])
+
+(defn random-phone-format
   ([]
-   (random-us-phone-number rand-nth rand-nth phone-number-formats))
-  ([rand-nth-ac rand-nth-npa-nxx phone-number-formats]
-   (let [ac         (random-area-code rand-nth-ac)
-         number-fmt (util/random-format-number (rand-nth-npa-nxx phone-number-formats))]
+   (random-phone-format phone-number-formats))
+  ([fmts]
+   (rand-nth fmts)))
+
+(defn random-phone-number
+  ([]
+   (random-phone-number random-area-code random-nxx-xxxx-4ext))
+  ([random-area-code-fn random-nxx-xxxx-fn]
+   (random-phone-number random-area-code-fn random-nxx-xxxx-fn random-phone-format))
+  ([random-area-code-fn random-nxx-xxxx-fn random-phone-number-format-fn]
+   (let [ac         (random-area-code-fn)
+         number-fmt (util/format-number
+                     (random-phone-number-format-fn)
+                     (random-nxx-xxxx-fn))]
      (format number-fmt ac))))
+
+

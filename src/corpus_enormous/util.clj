@@ -25,13 +25,28 @@
                (do (.close rdr) nil))))]
     (helper (io/reader (io/resource filename)))))
 
+(defn make-seq-shift-fn [s]
+  (let [s (atom s)]
+    (fn take-next-from-seq []
+      (let [[hd & tail] @s]
+        (reset! s tail)
+        hd))))
+
+(defn make-seq-of [f]
+  (lazy-seq (fn [_] (f))))
+
+(defn format-number [^String pat digits]
+  (let [next-digit (make-seq-shift-fn digits)
+        res        (string/replace
+                    pat
+                    #"#"
+                    (fn [_]
+                      (str (next-digit))))]
+    res
+    #_(.replaceAll res "\\b0+(?=[^0])" "")))
+
 (defn random-format-number [pat]
-  (let [res (string/replace
-             pat
-             #"#"
-             (fn [_]
-               (str (rand-int 10))))]
-    (.replaceAll res "\\b0+(?=[^0])" "")))
+  (format-number pat (make-seq-of #(rand-int 10))))
 
 (defn lazy-resource-csv-recs [filename]
   (let [rdr    (io/reader (io/resource filename))
