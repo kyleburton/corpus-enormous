@@ -3,7 +3,7 @@
    [corpus-enormous.util  :as util]
    [clojure.tools.logging :as log]))
 
-(def us-area-code-detail
+(defonce us-area-code-detail
   [["Area Code" "Region" "Time Zone Offset" "Description"]
    ["52 55" "MX" "-6" "   Mexico: Mexico City area (country code + city code)"]
    ["201" "NJ" "-5" "   N New Jersey: Jersey City, Hackensack (see split 973, overlay 551)"]
@@ -395,40 +395,43 @@
    #(nth % 0)
    (drop 2 us-area-code-detail)))
 
-(defn random-area-code []
-  (rand-nth us-area-codes))
+(defn random-area-code
+  ([]
+   (random-area-code rand-nth))
+  ([rand-nth]
+   (rand-nth us-area-codes)))
 
-(def phone-number-formats [
-                     "%s#######"
-                     "%s ###-####"
-                     "%s.###.####"
-                     "(%s) ###-####"
-                     
-                     "1%s#######"
-                     "1 %s ###-####"
-                     "1.%s.###.####"
-                     "1 (%s) ###-####"
-                     
-                     "%s#######"
-                     "%s ###-####"
-                     "%s.###.####"
-                     "(%s) ###-####"
-                     
-                     "1%s####### x##"
-                     "1 %s ###-#### x##"
-                     "1.%s.###.#### x##"
-                     "1 (%s) ###-#### x##"
-                     
-                     "1%s####### ext##"
-                     "1 %s ###-#### ext##"
-                     "1.%s.###.#### ext##"
-                     "1 (%s) ###-#### ext##"
-                     ])
+(defonce phone-number-formats [
+                               "%s#######"
+                               "%s ###-####"
+                               "%s.###.####"
+                               "(%s) ###-####"
+                               
+                               "1%s#######"
+                               "1 %s ###-####"
+                               "1.%s.###.####"
+                               "1 (%s) ###-####"
+                               
+                               "%s#######"
+                               "%s ###-####"
+                               "%s.###.####"
+                               "(%s) ###-####"
+                               
+                               "1%s####### x##"
+                               "1 %s ###-#### x##"
+                               "1.%s.###.#### x##"
+                               "1 (%s) ###-#### x##"
+                               
+                               "1%s####### ext##"
+                               "1 %s ###-#### ext##"
+                               "1.%s.###.#### ext##"
+                               "1 (%s) ###-#### ext##"
+                               ])
 
 (defn random-us-phone-number
   ([]
-   (random-us-phone-number phone-number-formats))
-  ([phone-number-formats]
-   (let [ac         (random-area-code)
-         number-fmt (util/random-format-number (rand-nth phone-number-formats))]
+   (random-us-phone-number rand-nth rand-nth phone-number-formats))
+  ([rand-nth-ac rand-nth-npa-nxx phone-number-formats]
+   (let [ac         (random-area-code rand-nth-ac)
+         number-fmt (util/random-format-number (rand-nth-npa-nxx phone-number-formats))]
      (format number-fmt ac))))

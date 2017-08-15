@@ -1,0 +1,4 @@
+TODO: factor out the random number generation in order to facilitate testing and deteriminism (eg: support taking the lfsr for pseudo random w/o repeats!)
+TODO: implement a test with the new RNG code
+TODO: replace schema with spec
+TODO: clojurescript interface for composing, generating & downloading a csv of a data set?

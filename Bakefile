@@ -2,13 +2,13 @@
 
 bake_require github.com/kyleburton/bake-recipies/emacs/cider.sh
 
-bake_task run_emacs "Run emacs with Kyle's configuration"
-function run_emacs () {
+bake_task run-emacs "Run emacs with Kyle's configuration"
+function run-emacs () {
   emacs -nw -q -l $HOME/.bake/packages/github.com/kyleburton/bake-recipies/files/emacs/.emacs "$@"
 }
 
-bake_task run_dev "Run the project's main (the NREPL server)"
-function run_dev () {
+bake_task run-dev "Run the project's main (the NREPL server)"
+function run-dev () {
   lein with-profile +dev run -m corpus-enormous.nrepl
 }
 
@@ -16,7 +16,7 @@ function run_dev () {
 # function gen-rand-email-file () {
 #   lein run  -m data-talk.core generate-email-address-file
 # }
- 
+
 
 bake_task get-tlds
 function get-tlds () {
