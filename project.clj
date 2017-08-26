@@ -3,6 +3,9 @@
   :url "https://github.com/kyleburton/corpus-enormous"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :deploy-repositories [
+                 ["releases"  {:url "https://clojars.org/repo" :creds :gpg}]
+                 ["snapshots" {:url "https://clojars.org/repo" :creds :gpg}]]
   :profiles {:dev {:resource-paths ["dev-resources"]
                    :dependencies   [
                                     [org.clojure/tools.logging              "0.3.1"]
