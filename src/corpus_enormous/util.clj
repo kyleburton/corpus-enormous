@@ -33,7 +33,8 @@
         hd))))
 
 (defn make-seq-of [f]
-  (lazy-seq (fn [_] (f))))
+  (let [ff (fn inner-fn [] (lazy-seq (cons (f) (inner-fn))))]
+    (ff)))
 
 (defn format-number [^String pat digits]
   (let [next-digit (make-seq-shift-fn digits)

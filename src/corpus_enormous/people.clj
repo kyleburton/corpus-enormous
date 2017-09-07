@@ -29,6 +29,6 @@
       :gender     gender
       :email      (emails/rand-email-address first-name last-name)
       :ssn        (rand-ssn)
-      :phone      (phones/random-us-phone-number)}
+      :phone      (phones/random-phone-number)}
      (addresses/random-address))))
 
