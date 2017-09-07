@@ -26,6 +26,8 @@ Roadmap:
 
 ## Usage
 
+[![Clojars Project](https://img.shields.io/clojars/v/corpus-enormous.svg)](https://clojars.org/corpus-enormous)
+
 ```Clojure
 > lein repl
 user=> (require 'corpus-enormous.people)
@@ -91,7 +93,7 @@ user=> (->> corpus-enormous.people/random-person repeatedly (map clojure.pprint/
  :zip "53522",
  :gender "F"}
 (nil nil nil nil nil)
-user=> 
+user=>
 ```
 
 ## License
