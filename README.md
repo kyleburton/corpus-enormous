@@ -96,9 +96,14 @@ user=> (->> corpus-enormous.people/random-person repeatedly (map clojure.pprint/
 user=>
 ```
 
+## Data Sources
+
+* https://www.census.gov/library/reference/code-lists/ansi/ansi-codes-for-states.html
+
+
 ## License
 
-Copyright © 2015 Kyle Burton kyle.burton@gmail.com
+Copyright © 2015-2024 Kyle Burton kyle.burton@gmail.com
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
