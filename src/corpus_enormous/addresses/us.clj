@@ -6,6 +6,7 @@
    [clojure.string           :as string]))
 
 (def zipcodes-resource-file "corpus-enormous/addresses/us/zbp13totals.txt")
+(def us-states-resource-file "corpus-enormous/census.gov/us-national-fips-and-gnis-codes-file.txt")
 
 (defn random-street-number []
   (util/random-format-number
@@ -31,6 +32,24 @@
        (fn [[zip5 city-state]]
          (let [[city state] (.split city-state ", " 2)]
            [zip5 city state])))))))
+
+(comment
+  (zip-city-and-state)
+
+  )
+
+(defn parse-census-fips-data [^String data]
+  (->>
+   (.split data "\n")
+   (drop 1)
+   (mapv
+    (fn [line]
+      (let [[_state-cd abbr state-name _statens] (.split line "\\|" 4)]
+        [abbr state-name]))))
+  )
+
+(defonce us-states
+  (parse-census-fips-data (util/slurp-resource us-states-resource-file)))
 
 (comment
   (take 10 (zip-city-and-state))
@@ -137,5 +156,3 @@
      :city    city
      :state   state
      :zip     zip}))
-
-

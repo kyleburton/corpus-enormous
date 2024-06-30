@@ -49,6 +49,9 @@
 (defn random-format-number [pat]
   (format-number pat (make-seq-of #(rand-int 10))))
 
+(defn slurp-resource [filename]
+  (slurp (io/resource filename)))
+
 (defn lazy-resource-csv-recs [filename]
   (let [rdr    (io/reader (io/resource filename))
         helper (fn helper [[rec & recs]]
@@ -59,5 +62,3 @@
                       (.close rdr)
                       nil))))]
     (helper (csv/read-csv rdr))))
-
-
